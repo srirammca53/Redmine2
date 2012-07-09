@@ -16,6 +16,8 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 RedmineApp::Application.routes.draw do
+
+  
   root :to => 'welcome#index', :as => 'home'
 
   match 'login', :to => 'account#login', :as => 'signin'
@@ -88,6 +90,9 @@ RedmineApp::Application.routes.draw do
   match 'projects/:id/settings/:tab', :to => "projects#settings"
 
   resources :projects do
+    resources :sprints 
+
+
     member do
       get 'settings'
       post 'modules'

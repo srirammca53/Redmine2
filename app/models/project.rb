@@ -34,7 +34,7 @@ class Project < ActiveRecord::Base
                                :conditions => "#{Principal.table_name}.type='Group' OR (#{Principal.table_name}.type='User' AND #{Principal.table_name}.status=#{User::STATUS_ACTIVE})"
   has_many :users, :through => :members
   has_many :principals, :through => :member_principals, :source => :principal
-
+  has_many :sprints
   has_many :enabled_modules, :dependent => :delete_all
   has_and_belongs_to_many :trackers, :order => "#{Tracker.table_name}.position"
   has_many :issues, :dependent => :destroy, :include => [:status, :tracker]
